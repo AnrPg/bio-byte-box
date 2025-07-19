@@ -1,0 +1,57 @@
+#!/bin/bash
+
+MSG_FILE=$1
+MSG_CONTENT=$(cat "$MSG_FILE")
+
+# 1. Check emoji-based prefix
+ALLOWED_PREFIXES=(
+  "🧬 yeet:"
+  "⚗️ brew:"
+  "🔪 snip:"
+  "🧪 mutate:"
+  "🧼 sanitize:"
+  "🧟 revive:"
+  "🧯 patch:"
+  "🤡 clown:"
+  "📈 flex:"
+  "🫠 cope:"
+  "🔬 dissect:"
+)
+
+read -r FIRST_LINE < "$MSG_FILE"
+
+PREFIX_OK=false
+for prefix in "${ALLOWED_PREFIXES[@]}"; do
+  if [[ $FIRST_LINE == "$prefix"* ]]; then
+    PREFIX_OK=true
+    break
+  fi
+done
+
+if ! $PREFIX_OK; then
+  echo "❌ Commit message must start with one of the Gen Z science-satirical prefixes:"
+  for prefix in "${ALLOWED_PREFIXES[@]}"; do
+    echo "   $prefix ..."
+  done
+  exit 1
+fi
+
+# 2. Check first line length ≤ 50 characters
+if [ ${#FIRST_LINE} -gt 50 ]; then
+  echo "❌ First line (short description) must be ≤ 50 characters."
+  echo "   Yours has ${#FIRST_LINE} characters:"
+  echo "   \"$FIRST_LINE\""
+  exit 1
+fi
+
+# 3. Check body lines (after blank line) are ≤ 60 characters
+BODY_LINES=$(awk 'NR>1 && length($0) > 0 { print }' "$MSG_FILE")
+while IFS= read -r line; do
+  if [ ${#line} -gt 60 ]; then
+    echo "❌ Each line of the extended description must be ≤ 60 characters."
+    echo "   Offending line: \"$line\""
+    exit 1
+  fi
+done <<< "$BODY_LINES"
+
+exit 0

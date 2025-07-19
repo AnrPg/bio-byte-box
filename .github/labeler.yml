@@ -1,0 +1,14 @@
+infect-*:
+  - feature
+
+phage-*:
+  - bug
+
+mutagen-*:
+  - experimental
+
+autoclave-*:
+  - refactor
+
+triage-*:
+  - hotfix
