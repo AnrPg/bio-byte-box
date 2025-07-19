@@ -1,5 +1,10 @@
 name: Label PRs
 
+# grant just enough scope to label PRs
+permissions:
+  pull-requests: write
+  contents: read     # needed to fetch your .github/labeler.yml
+  
 on:
   pull_request:
     types: [opened, synchronize, reopened]
