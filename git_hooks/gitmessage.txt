@@ -1,0 +1,357 @@
+
+
+# ---------------------- COMMIT MESSAGE GUIDELINES ----------------------
+# ✅ Start with one of the approved emoji prefixes:
+#   🧬 yeet:     removed stuff
+#   ⚗️ brew:     added new feature or experiment
+#   🔪 snip:     refactored or removed code
+#   🧪 mutate:   changed behavior or logic
+#   🧼 sanitize: fixed bugs
+#   🧟 revive:   brought back old code
+#   🧯 patch:    urgent fix
+#   🤡 clown:    cursed workaround
+#   📈 flex:     performance improvements
+#   🫠 cope:     quick local fix under pressure
+#   🔬 dissect:  break apart modules/folders & reassemble
+#
+# 📝 Keep the subject (1st line) under 50 chars (imperative mood).
+# Leave a blank line, then body lines ≤ 60 chars each.
+# Provide context: what & why, link issues if relevant.
+# ------------------------------------------------------------------------
+
+# 🧪 mutate: 
+
+# ---------------------- EXAMPLES ----------------------
+# 🧬 yeet: remove unused genome parser
+#
+# ⚗️ brew: add enhancer-scoring module
+#
+# 🔪 snip: refactor alignment metrics to vectorize
+#
+# 🧼 sanitize: fix off-by-one in exon extractor
+#
+# 🤡 clown: hack to bypass slow I/O in mocks
+#
+# 🧯 patch: urgent fix for crashing on empty FASTQ
+#
+# 📈 flex: speed up k-mer counter by 2×
+#
+# 🪷 cope: temp fix for circular genome recursion
+# ------------------------------------------------------------------------
+
+# ----------------------- COMMIT CHECKLIST -----------------------
+# 1. Subject starts with an imperative verb describing **what** changed.
+# 2. Subject is ≤ 50 characters (including emoji prefix).
+# 3. Subject does **not** end with a period or punctuation.
+# 4. Leave a blank line between subject and body.
+# 5. Body lines are wrapped at ≤ 60 characters.
+# 6. First body paragraph explains **what** you did (see below, at *1).
+# 7. Second paragraph explains **why** this change was necessary (see below, at *1).
+# 8. Reference any issue/PR IDs (e.g., “Closes #42”) when relevant.
+# 9. Use your approved emoji prefix to signal intent (yeet, brew, etc.).
+# 10. Keep commits **atomic**—one logical change per commit.
+# 11. Proofread spelling & grammar for clarity.
+# 12. If tests or docs changed, mention them explicitly in the body.
+# ----------------------------------------------------------------
+#
+#------------------------- *1 ------------------------------------
+#------------------- BRAINFOG SAVER -------------------------------
+#
+# ## How to use:
+#
+# - Tick off the relevant items when writing each paragraph.
+# - Aim to cover at least one “what” and one “why” per commit.
+# 
+# This ensures every commit message tells a complete story:
+# 
+# 1. What you did, and  
+# 2. Why it matters.
+# 
+# ## 📋 Paragraph 1: What you changed (pick all that apply)
+# 
+# - Feature: new functionality, endpoint, UI control
+# - Fix: bug resolved, incorrect behavior corrected
+# - Refactor: code reorganization, cleanup, improved readability
+# - Optimization: performance improvements, memory use reduction
+# - Security: vulnerability patch, sanitization, auth hardening
+# - Dependency: add/update/remove library or tool version
+# - Docs: documentation, examples, README updates
+# - Test: new or updated unit/integration tests
+# - CI/CD: pipeline, workflow, GitHub Action changes
+# - Chore: build scripts, config files, maintenance tasks
+# - UX/UI: styling tweaks, accessibility improvements
+# - Data: schema migrations, seed data changes, format updates
+# - Sample: example files or demo datasets
+# - Experimental: proof-of-concept, feature flag behind flag
+# - Localization: i18n text, locale files added/updated
+# 
+# ## 📋 Paragraph 2: Why it was needed (pick all that apply)
+# 
+# - User benefit: improves user experience, new use case
+# - Performance: faster execution, lower memory, less I/O
+# - Reliability: fixes crashes, edge-case handling
+# - Maintainability: easier to extend, clearer codebase
+# - Consistency: aligns with specs, data formats, style guides
+# - Security risk: closes vulnerability, prevents injection
+# - Compliance: meets standard (GTF spec, JSON schema, etc.)
+# - Compatibility: supports new Python/OS versions or browsers
+# - Bug severity: critical fix, prevents data corruption
+# - Developer workflow: streamlines testing or build process
+# - Scalability: enables larger datasets or parallelism
+# - Technical debt: pays down debt, future-proofs code
+# - Resource reduction: decreases storage, network, CPU load
+# - Issue tracking: resolves GH-#123, Jira TICKET-456
+# - Experiment rationale: testing new algorithm or approach
+# - Prototyping: temporary scaffolding until full solution
+# 
+# 
+#  ---------------------- USAGE EXAMPLES ----------------------
+#
+# 1. 🧬 yeet: remove unused genome parser
+# ✅ Good
+# 🧬 yeet: remove deprecated genome parser
+#
+# The old parser was never used since we switched to
+# parsers v2. This cleanup reduces confusion and
+# shrinks install size by ~200 KB.
+# ❌ Bad
+# 🧬 yeet: removed parser
+#
+# Deleted old parser code.
+# (❌ Only how, no context on why or impact.)
+#
+# 2. ⚗️ brew: add enhancer-scoring module
+# ✅ Good
+# ⚗️ brew: add enhancer-scoring module
+#
+# Enhancer scoring identifies regulatory regions
+# with high predicted activity, needed for the
+# new promoter analysis pipeline.
+# ❌ Bad
+# ⚗️ brew: added scoring
+#
+# Added scoring code for enhancers.
+# (❌ Too vague: what scoring? Why needed?)
+#
+# 3. 🔪 snip: refactor alignment metrics to vectorize
+# ✅ Good
+# 🔪 snip: refactor alignment metrics to vectorize
+#
+# Converted loop-based coverage calculation to
+# NumPy vector ops -> reduces compute time by 3×.
+# ❌ Bad
+# 🔪 snip: refactored metrics
+#
+# Refactored coverage code.
+# (Missing why and benefits.)
+#
+# 4. 🧪 mutate: tweak translation pipeline
+# ✅ Good
+# 🧪 mutate: tweak translation pipeline for edge cases
+#
+# Fixes handling of sequences with stop codons at 
+# tail—the previous version dropped them unnoted,
+# now they're flagged and reported.
+# ❌ Bad
+# 🧪 mutate: pipeline tweak
+#
+# Tweaked translation code.
+# (Vague what changed and why.)
+#
+# 5. 🧼 sanitize: fix off-by-one in exon extractor
+# ✅ Good
+# 🧼 sanitize: fix off-by-one in exon range
+#
+# Exon end position was off by one bp—misaligned
+# annotations. Now corrected to match GTF spec.
+# ❌ Bad
+# 🧼 sanitize: fix bug
+#
+# Fixed bug in exon extractor.
+# (No context on bug or its impact.)
+#
+# 6. 🤡 clown: hack to bypass slow I/O in mocks
+# ✅ Good
+# 🤡 clown: hack bypass slow I/O in unit tests
+#
+# Replaced file-system calls with dummy buffers
+# to speed up test runs (~5× faster) while I
+# investigate async I/O performance later.
+# ❌ Bad
+# 🤡 clown: hack test I/O
+#
+# Hacked tests to run faster.
+# (No target of hack or timeframe.)
+#
+# 7. 🧯 patch: urgent fix for crashing on empty FASTQ
+# ✅ Good
+# 🧯 patch: prevent crash on empty FASTQ input
+#
+# Added empty-file check to avoid crash when users
+# upload zero-length FASTQ files. See GH-#42.
+# ❌ Bad
+# 🧯 patch: fix crash
+#
+# Fixed a crash in FASTQ parser.
+# (Lacks details or references.)
+#
+# 8. 📈 flex: speed up k-mer counter by 2×
+# ✅ Good
+# 📈 flex: speed up k-mer counter by 2×
+#
+# Switched from Python dict to NumPy structured
+# arrays, enabling vectorized counting across multiple
+# threads. Benchmarked on genome_500MB.
+# ❌ Bad
+# 📈 flex: optimize counter
+#
+# Optimized the k-mer counter.
+# (No specifics or results.)
+#
+# 9. 🫠 cope: temp fix for circular genome recursion
+# ✅ Good
+# 🫠 cope: temp fix for circular genome recursion
+#
+# Added recursion depth guard to prevent infinite
+# loops for circular genomes. Temporary until
+# we implement full topology support.
+# ❌ Bad
+# 🫠 cope: fix recursion
+#
+# Fixed recursion issue.
+# (No mention of context or temporary nature.)
+# -----------------------------------------------------------------
+
+
+
+
+
+#  ------------------  Conventional Commits 1.0.0 -----------------------
+# 
+#  ## Summary
+#  ------------------------
+# 
+# The Conventional Commits specification is a lightweight convention on top of commit messages. It provides an easy set of rules for creating an explicit commit history; which makes it easier to write automated tools on top of. This convention dovetails with SemVer, by describing the features, fixes, and breaking changes made in commit messages.
+# 
+# The commit message should be structured as follows:
+#  -----------------------------------------------------
+# 
+# <type>[optional scope]: <description>
+# 
+# [optional body]
+# 
+# [optional footer(s)]
+# 
+# ------------------------------------------------------
+# 
+# The commit contains the following structural elements, to communicate intent to the consumers of your library:
+# 
+# fix: a commit of the type fix patches a bug in your codebase (this correlates with PATCH in Semantic Versioning).
+# 
+# feat: a commit of the type feat introduces a new feature to the codebase (this correlates with MINOR in Semantic Versioning).
+# 
+# BREAKING CHANGE: a commit that has a footer BREAKING CHANGE:, or appends a ! after the type/scope, introduces a breaking API change (correlating with MAJOR in Semantic Versioning). A BREAKING CHANGE can be part of commits of any type.
+# 
+# types other than fix: and feat: are allowed, for example @commitlint/config-conventional (based on the Angular convention) recommends build:, chore:, ci:, docs:, style:, refactor:, perf:, test:, and others.
+# 
+# footers other than BREAKING CHANGE: <description> may be provided and follow a convention similar to git trailer format.
+# 
+# Additional types are not mandated by the Conventional Commits specification, and have no implicit effect in Semantic Versioning (unless they include a BREAKING CHANGE). A scope may be provided to a commit’s type, to provide additional contextual information and is contained within parenthesis, e.g., feat(parser): add ability to parse arrays.
+# 
+# 
+#  ## Examples
+#  ------------------------
+# 
+# Commit message with description and breaking change footer
+# ---------------------------------------------------------------
+# -- feat: allow provided config object to extend other configs
+# -- BREAKING CHANGE: `extends` key in config file is now used for extending other config files
+# 
+# 
+# 
+# Commit message with ! to draw attention to breaking change
+# ---------------------------------------------------------------
+# -- feat!: send an email to the customer when a product is shipped
+# 
+# 
+# 
+# Commit message with scope and ! to draw attention to breaking change
+# ----------------------------------------------------------------------
+# -- feat(api)!: send an email to the customer when a product is shipped
+# 
+# 
+# 
+# Commit message with both ! and BREAKING CHANGE footer
+# --------------------------------------------------------
+# -- chore!: drop support for Node 6
+# -- BREAKING CHANGE: use JavaScript features not available in Node 6.
+# 
+# 
+# 
+# Commit message with no body
+# -------------------------------------
+# -- docs: correct spelling of CHANGELOG
+# 
+# 
+# 
+# Commit message with scope
+# -------------------------------------
+# -- feat(lang): add Polish language
+# 
+# 
+# 
+# Commit message with multi-paragraph body and multiple footers
+# ---------------------------------------------------------------
+# -- fix: prevent racing of requests
+# 
+# Introduce a request id and a reference to latest request. Dismiss
+# incoming responses other than from latest request.
+# 
+# Remove timeouts which were used to mitigate the racing issue but are
+# obsolete now.
+# 
+# Reviewed-by: Z
+# Refs: #123
+# 
+# 
+# 
+# 
+# 
+#     
+#  ## Specification
+#  ------------------------------------------------------------------------------------------
+# 
+# The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in RFC 2119.
+# 
+# 1. Commits MUST be prefixed with a type, which consists of a noun, feat, fix, etc., followed by the OPTIONAL scope, OPTIONAL !, and REQUIRED terminal colon and space.
+# 
+# 2. The type feat MUST be used when a commit adds a new feature to your application or library.
+# 
+# 3. The type fix MUST be used when a commit represents a bug fix for your application.
+# 
+# 4. A scope MAY be provided after a type. A scope MUST consist of a noun describing a section of the codebase surrounded by parenthesis, e.g., fix(parser):
+# 
+# 5. A description MUST immediately follow the colon and space after the type/scope prefix. The description is a short summary of the code changes, e.g., fix: array parsing issue when multiple spaces were contained in string.
+# 
+# 6. A longer commit body MAY be provided after the short description, providing additional contextual information about the code changes. The body MUST begin one blank line after the description.
+# 
+# 7. A commit body is free-form and MAY consist of any number of newline separated paragraphs.
+# 
+# 8. One or more footers MAY be provided one blank line after the body. Each footer MUST consist of a word token, followed by either a :<space> or <space># separator, followed by a string value (this is inspired by the git trailer convention).
+# 
+# 9. A footer’s token MUST use - in place of whitespace characters, e.g., Acked-by (this helps differentiate the footer section from a multi-paragraph body). An exception is made for BREAKING CHANGE, which MAY also be used as a token.
+# 
+# 10. A footer’s value MAY contain spaces and newlines, and parsing MUST terminate when the next valid footer token/separator pair is observed.
+# 
+# 11. Breaking changes MUST be indicated in the type/scope prefix of a commit, or as an entry in the footer.
+# 
+# 12. If included as a footer, a breaking change MUST consist of the uppercase text BREAKING CHANGE, followed by a colon, space, and description, e.g., BREAKING CHANGE: environment variables now take precedence over config files.
+# 
+# 13. If included in the type/scope prefix, breaking changes MUST be indicated by a ! immediately before the :. If ! is used, BREAKING CHANGE: MAY be omitted from the footer section, and the commit description SHALL be used to describe the breaking change.
+# 
+# 14. Types other than feat and fix MAY be used in your commit messages, e.g., docs: update ref docs.
+# 
+# 15. The units of information that make up Conventional Commits MUST NOT be treated as case sensitive by implementors, with the exception of BREAKING CHANGE which MUST be uppercase.
+# 
+# 16. BREAKING-CHANGE MUST be synonymous with BREAKING CHANGE, when used as a token in a footer.
+# 

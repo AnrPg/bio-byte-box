@@ -1,0 +1,9 @@
+{
+    "files.exclude": {
+        "**/.git": false
+    },
+    "editor.mouseWheelZoom": true,
+    "editor.formatOnPaste": true,
+    "diffEditor.codeLens": true,
+    "diffEditor.experimental.showMoves": true
+}

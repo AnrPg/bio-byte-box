@@ -1,0 +1,8 @@
+#!/bin/bash
+
+echo "🧼 Running Black formatter..."
+black .
+if [ $? -ne 0 ]; then
+  echo "❌ Black found formatting issues."
+  exit 1
+fi
