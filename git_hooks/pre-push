@@ -49,7 +49,7 @@ do
 done
 
 echo "🧪 Running Ruff linter..."
-ruff .
+ruff check --fix .
 if [ $? -ne 0 ]; then
   echo "❌ Ruff found issues. Push aborted."
   exit 1

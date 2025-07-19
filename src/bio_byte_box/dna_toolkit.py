@@ -2,8 +2,10 @@ import collections
 
 DNA_NUCLEOTIDES: list[str] = ["A", "C", "G", "T", "a", "c", "g", "t"]
 RNA_NUCLEOTIDES: list[str] = ["A", "C", "G", "U", "a", "c", "g", "u"]
-DNA_COMPLEMENTS: dict[str, str] = { "A": "T", "C": "G", "G": "C", "T": "A", "a": "t", "c": "g", "g": "c", "t": "a" }
-RNA_COMPLEMENTS: dict[str, str] = { "A": "U", "C": "G", "G": "C", "U": "A", "a": "u", "c": "g", "g": "c", "u": "a"}
+DNA_COMPLEMENTS: dict[str, str] = { "A": "T", "C": "G", "G": "C", "T": "A",
+                                   "a": "t", "c": "g", "g": "c", "t": "a" }
+RNA_COMPLEMENTS: dict[str, str] = { "A": "U", "C": "G", "G": "C", "U": "A",
+                                   "a": "u", "c": "g", "g": "c", "u": "a"}
 
 def is_valid_dna_sequence(sequence: str) -> bool:
     """Check if the given sequence is a valid DNA sequence.
