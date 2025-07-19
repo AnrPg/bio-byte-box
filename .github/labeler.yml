@@ -1,14 +1,24 @@
-infect-*:
-  - feature
+# Label any PR whose branch starts with 'infect-' as 'feature'
+feature:
+  - head-branch:
+    - '^infect-'
 
-phage-*:
-  - bug
+# Label 'phage-*' branches as 'bug'
+bug:
+  - head-branch:
+    - '^phage-'
 
-mutagen-*:
-  - experimental
+# Label 'mutagen-*' branches as 'experimental'
+experimental:
+  - head-branch:
+    - '^mutagen-'
 
-autoclave-*:
-  - refactor
+# Label 'autoclave-*' branches as 'refactor'
+refactor:
+  - head-branch:
+    - '^autoclave-'
 
-triage-*:
-  - hotfix
+# Label 'triage-*' branches as 'hotfix'
+hotfix:
+  - head-branch:
+    - '^triage-'
