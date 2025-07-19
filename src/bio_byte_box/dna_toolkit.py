@@ -102,5 +102,3 @@ def nucleotide_frequencies(sequence: str, is_dna: bool = True) -> dict[str, floa
         nucleotide: counts[nucleotide] / total_nucleotides
         for nucleotide in (DNA_NUCLEOTIDES if is_dna else RNA_NUCLEOTIDES)
     }
-
-
