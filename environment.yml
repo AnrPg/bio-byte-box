@@ -14,4 +14,5 @@ dependencies:
   - menuinst
   - anaconda-anon-usage
   - pip:
-    - 
+    - Bio==1.8.0
+    - utils==1.0.2
