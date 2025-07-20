@@ -11,9 +11,8 @@ Now it is easy to query NCBI’s Entrez eInfo to list all available databases
 and print a brief description for each.
 """
 
-import time
 import sys
-
+import time
 from typing import Any, Union
 
 from Bio import Entrez
@@ -96,7 +95,9 @@ def get_db_info(
 
 
 def show_available_dbs(
-    db_names: Union[DictionaryElement, ListElement], email: str, api: str = None
+    db_names: Union[DictionaryElement, ListElement],
+    email: str,
+    api: str = None,
 ) -> None:
     """
     Print the names and descriptions of all available NCBI databases.
@@ -125,15 +126,15 @@ def show_available_dbs(
             )
             continue
 
-        from utils import pretty_dict        
-        pretty_dict(info)
+        from utils import pretty_log
 
+        pretty_log(info)
 
         time.sleep(1)
+
+
 if __name__ == "__main__":
     # Always tell NCBI who you are; if you have a key, set Entrez.api_key too.
-    email = "-----------------------------------------TO BE FILLED MANUALLY OR FROM ENV VARS------------------------------------------------"
-    api_key = "---------------------------------------TO BE FILLED MANUALLY OR FROM ENV VARS------------------------------------------------"
+    email = "---------------TO BE FILLED MANUALLY OR FROM ENV VARS---------------------"
+    api_key = "-------------TO BE FILLED MANUALLY OR FROM ENV VARS---------------------"
     show_available_dbs(get_ncbi_dbs(email, api_key))
-
-
