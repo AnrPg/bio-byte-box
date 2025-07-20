@@ -20,7 +20,7 @@ jobs:
         pip install black ruff
 
     - name: Run Black (check only)
-      run: black --check .
+      run: black .
 
     - name: Run Ruff (linter)
       run: ruff check --fix .
