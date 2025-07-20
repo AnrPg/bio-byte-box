@@ -15,4 +15,4 @@ dependencies:
   - anaconda-anon-usage
   - pip:
     - Bio==1.8.0
-    - utils==1.0.2
+    - rich==14.0.0
